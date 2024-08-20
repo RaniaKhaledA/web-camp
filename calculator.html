@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .calculator input {
+            height: 60px;
+            font-size: 1.5rem;
+            text-align: right;
+        }
+        .calculator button {
+            height: 60px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="calculator bg-light">
+        <input type="text" class="form-control mb-3" id="display" readonly>
+
+        <div class="row">
+            <div class="col-3">
+                <button class="btn btn-danger w-100" onclick="clearDisplay()">C</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="appendNumber('/')">/</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="appendNumber('*')">*</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="appendNumber('-')">-</button>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('7')">7</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('8')">8</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('9')">9</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="appendNumber('+')">+</button>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('4')">4</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('5')">5</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('6')">6</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-secondary w-100" onclick="calculate()">=</button>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('1')">1</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('2')">2</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('3')">3</button>
+            </div>
+            <div class="col-3">
+                <button class="btn btn-light w-100" onclick="appendNumber('0')">0</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script>
+    function clearDisplay() {
+        document.getElementById('display').value = '';
+    }
+
+    function appendNumber(number) {
+        document.getElementById('display').value += number;
+    }
+
+    function calculate() {
+        try {
+            document.getElementById('display').value = eval(document.getElementById('display').value);
+        } catch (error) {
+            alert('Invalid expression');
+            clearDisplay();
+        }
+    }
+</script>
+
+</body>
+</html>
